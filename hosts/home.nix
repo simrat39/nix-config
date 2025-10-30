@@ -36,7 +36,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    pkgs.kitty
     pkgs.nerd-fonts.jetbrains-mono
     pkgs.wl-clipboard
     pkgs.eza
@@ -86,6 +85,8 @@
   #
   home.sessionVariables = {
     EDITOR = "nvim";
+    NIXOS_OZONE_WL = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
   };
 
   # Let Home Manager install and manage itself.

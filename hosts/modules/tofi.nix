@@ -15,4 +15,13 @@
       background-color = "#000A";
     };
   };
+
+  # Clear tofi cache on every rebuild
+  home.activation.clearTofiCache = {
+    after = [ "writeBoundary" ];
+    before = [ ];
+    data = ''
+      rm -rf $HOME/.cache/tofi*
+    '';
+  };
 }
