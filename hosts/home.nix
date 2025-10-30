@@ -10,6 +10,8 @@
     ./modules/brave.nix
     ./modules/tofi.nix
     ./modules/niri/niri.nix
+    ./modules/xdg_portal.nix
+    ./modules/gtk.nix
   ];
 
   nixpkgs.overlays = [ inputs.claude-code.overlays.default ];
