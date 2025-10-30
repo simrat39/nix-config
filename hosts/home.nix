@@ -11,6 +11,7 @@
     ./modules/tofi.nix
     ./modules/niri/niri.nix
     ./modules/xdg_portal.nix
+    ./modules/dconf.nix
     ./modules/gtk.nix
   ];
 
