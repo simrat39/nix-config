@@ -6,12 +6,12 @@
     
     theme = {
       name = "Adwaita-dark";
-      package = pkgs.gnome.gnome-themes-extra;
+      package = pkgs.gnome-themes-extra;
     };
     
     iconTheme = {
       name = "Adwaita";
-      package = pkgs.gnome.adwaita-icon-theme;
+      package = pkgs.adwaita-icon-theme;
     };
     
     # This is important for dark mode preference
