@@ -6,13 +6,15 @@
     inputs.dankMaterialShell.homeModules.dankMaterialShell.default
     inputs.dankMaterialShell.homeModules.dankMaterialShell.niri
 
+    inputs.nixcord.homeModules.nixcord
+
     ./modules/git.nix
     ./modules/brave.nix
     ./modules/tofi.nix
     ./modules/niri/niri.nix
     ./modules/xdg_portal.nix
-    ./modules/dconf.nix
     ./modules/gtk.nix
+    ./modules/nixcord.nix
   ];
 
   nixpkgs.overlays = [ inputs.claude-code.overlays.default ];
@@ -41,6 +43,7 @@
     pkgs.bat
     pkgs.ripgrep
     pkgs.claude-code
+    pkgs.dconf
   ];
 
   fonts.fontconfig = {

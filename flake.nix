@@ -39,9 +39,13 @@
     claude-code = {
       url = "github:sadjow/claude-code-nix";
     };
+
+    nixcord = {
+      url = "github:kaylorben/nixcord";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, dankMaterialShell, lanzaboote, claude-code, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, niri, dankMaterialShell, lanzaboote, claude-code, nixcord, ... }@inputs: {
     nixosConfigurations.simpc = nixpkgs.lib.nixosSystem {
       modules = [
         ./hosts/simpc/configuration.nix
