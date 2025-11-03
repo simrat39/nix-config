@@ -6,7 +6,6 @@
     inputs.dankMaterialShell.homeModules.dankMaterialShell.default
     inputs.dankMaterialShell.homeModules.dankMaterialShell.niri
     inputs.nixcord.homeModules.nixcord
-    inputs.android-nixpkgs.hmModule
 
     ./modules/git.nix
     ./modules/brave.nix
@@ -15,7 +14,6 @@
     ./modules/xdg_portal.nix
     ./modules/gtk.nix
     ./modules/nixcord.nix
-    ./modules/android.nix
   ];
 
   nixpkgs.overlays = [ inputs.claude-code.overlays.default ];
@@ -36,14 +34,18 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs.nerd-fonts.jetbrains-mono
-    pkgs.wl-clipboard
-    pkgs.eza
-    pkgs.bat
-    pkgs.ripgrep
-    pkgs.claude-code
-    pkgs.dconf
+  home.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    wl-clipboard
+    eza
+    bat
+    ripgrep
+    claude-code
+    dconf
+
+    android-tools
+    android-studio
+    scrcpy 
   ];
 
   fonts.fontconfig = {
@@ -88,7 +90,15 @@
     EDITOR = "nvim";
     NIXOS_OZONE_WL = "1";
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+    ANDROID_HOME = "${config.home.homeDirectory}/.android/sdk";
+    ANDROID_SDK_ROOT = "${config.home.homeDirectory}/.android/sdk";
   };
+
+  home.sessionPath = [
+    "${config.home.homeDirectory}/.android/sdk/platform-tools"
+    "${config.home.homeDirectory}/.android/sdk/tools"
+    "${config.home.homeDirectory}/.android/sdk/tools/bin"
+  ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

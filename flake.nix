@@ -45,14 +45,9 @@
       url = "github:kaylorben/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    android-nixpkgs = {
-      url = "github:tadfisher/android-nixpkgs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, dankMaterialShell, lanzaboote, claude-code, nixcord, android-nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, niri, dankMaterialShell, lanzaboote, claude-code, nixcord, ... }@inputs: {
     nixosConfigurations.simpc = nixpkgs.lib.nixosSystem {
       modules = [
         ./hosts/simpc/configuration.nix
