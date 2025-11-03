@@ -5,8 +5,8 @@
     inputs.niri.homeModules.niri
     inputs.dankMaterialShell.homeModules.dankMaterialShell.default
     inputs.dankMaterialShell.homeModules.dankMaterialShell.niri
-
     inputs.nixcord.homeModules.nixcord
+    inputs.android-nixpkgs.hmModule
 
     ./modules/git.nix
     ./modules/brave.nix
@@ -15,6 +15,7 @@
     ./modules/xdg_portal.nix
     ./modules/gtk.nix
     ./modules/nixcord.nix
+    ./modules/android.nix
   ];
 
   nixpkgs.overlays = [ inputs.claude-code.overlays.default ];

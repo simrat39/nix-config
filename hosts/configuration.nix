@@ -33,7 +33,7 @@
   users.users.simrat39 = {
     isNormalUser = true;
     description = "Simrat Grewal";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "kvm" "adbusers" ];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
