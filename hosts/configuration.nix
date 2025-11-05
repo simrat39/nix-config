@@ -29,20 +29,17 @@
     variant = "";
   };
 
-  programs.adb.enable = true;
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.simrat39 = {
     isNormalUser = true;
     description = "Simrat Grewal";
-    extraGroups = [ "networkmanager" "wheel" "kvm" "adbusers" ];
+    extraGroups = [ "networkmanager" "wheel" "kvm" ];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
-  programs.zsh.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -50,6 +47,8 @@
     sbctl
     efibootmgr
   ];
+
+  programs.zsh.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -7,6 +7,8 @@
     inputs.dankMaterialShell.homeModules.dankMaterialShell.niri
     inputs.nixcord.homeModules.nixcord
 
+
+
     ./modules/git.nix
     ./modules/brave.nix
     ./modules/tofi.nix
@@ -46,6 +48,7 @@
     android-tools
     android-studio
     scrcpy 
+    spotify
   ];
 
   fonts.fontconfig = {
@@ -90,14 +93,14 @@
     EDITOR = "nvim";
     NIXOS_OZONE_WL = "1";
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
-    ANDROID_HOME = "${config.home.homeDirectory}/.android/sdk";
-    ANDROID_SDK_ROOT = "${config.home.homeDirectory}/.android/sdk";
+    ANDROID_HOME = "${config.home.homeDirectory}/Android/Sdk";
+    ANDROID_SDK_ROOT = "${config.home.homeDirectory}/Android/Sdk";
   };
 
   home.sessionPath = [
-    "${config.home.homeDirectory}/.android/sdk/platform-tools"
-    "${config.home.homeDirectory}/.android/sdk/tools"
-    "${config.home.homeDirectory}/.android/sdk/tools/bin"
+    "${config.home.homeDirectory}/Android/Sdk/platform-tools"
+    "${config.home.homeDirectory}/Android/Sdk/tools"
+    "${config.home.homeDirectory}/Android/Sdk/tools/bin"
   ];
 
   # Let Home Manager install and manage itself.
