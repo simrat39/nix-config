@@ -7,8 +7,6 @@
     inputs.dankMaterialShell.homeModules.dankMaterialShell.niri
     inputs.nixcord.homeModules.nixcord
 
-
-
     ./modules/git.nix
     ./modules/brave.nix
     ./modules/tofi.nix
@@ -16,6 +14,7 @@
     ./modules/xdg_portal.nix
     ./modules/gtk.nix
     ./modules/nixcord.nix
+    ./modules/zoxide.nix
   ];
 
   nixpkgs.overlays = [ inputs.claude-code.overlays.default ];
