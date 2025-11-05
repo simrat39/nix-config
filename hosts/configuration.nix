@@ -29,6 +29,8 @@
     variant = "";
   };
 
+  programs.adb.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.simrat39 = {
     isNormalUser = true;
@@ -37,7 +39,6 @@
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
-
   programs.zsh.enable = true;
 
   # Allow unfree packages

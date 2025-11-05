@@ -32,7 +32,7 @@
     };
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
+      url = "github:nix-community/lanzaboote/v0.4.3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -61,7 +61,7 @@
         }
 
         lanzaboote.nixosModules.lanzaboote
-        ({ pkg, lib, ...}: {
+        ({ pkgs, lib, ...}: {
           boot.loader.systemd-boot.enable = lib.mkForce false;
           boot.lanzaboote = {
             enable = true;
