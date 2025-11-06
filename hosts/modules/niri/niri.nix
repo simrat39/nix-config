@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   programs.niri = {
-    enable = true;
+   # enable = true;
     package = pkgs.niri;
     config = builtins.readFile ./config.kdl;
   };

@@ -52,10 +52,6 @@
       modules = [
         ./hosts/simpc/configuration.nix
 
-	{
-	  nixpkgs.overlays = [ niri.overlays.niri ];
-	}
-
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -63,6 +59,13 @@
           home-manager.users.simrat39 = import ./hosts/simpc/home.nix;
           home-manager.extraSpecialArgs = { inherit self inputs; };
         }
+
+        niri.nixosModules.niri
+	{
+	  programs.niri.enable = true;
+          nixpkgs.overlays = [ niri.overlays.niri ];
+          programs.niri.package = pkgs.niri-unstable;
+	}
 
         lanzaboote.nixosModules.lanzaboote
         ({ pkgs, lib, ...}: {
