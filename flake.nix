@@ -52,6 +52,10 @@
       modules = [
         ./hosts/simpc/configuration.nix
 
+	{
+	  nixpkgs.overlays = [ niri.overlays.niri ];
+	}
+
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;

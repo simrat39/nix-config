@@ -11,7 +11,6 @@
     ./modules/brave.nix
     ./modules/tofi.nix
     ./modules/niri/niri.nix
-    ./modules/xdg_portal.nix
     ./modules/gtk.nix
     ./modules/nixcord.nix
     ./modules/zoxide.nix
@@ -95,6 +94,8 @@
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     ANDROID_HOME = "${config.home.homeDirectory}/Android/Sdk";
     ANDROID_SDK_ROOT = "${config.home.homeDirectory}/Android/Sdk";
+    XDG_CURRENT_DESKTOP = "niri";
+    XDG_SESSION_TYPE = "wayland";
   };
 
   home.sessionPath = [

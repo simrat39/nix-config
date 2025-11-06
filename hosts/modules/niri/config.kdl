@@ -598,3 +598,13 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 }
+
+environment {
+    EDITOR  "nvim"
+    NIXOS_OZONE_WL  "1"
+    ELECTRON_OZONE_PLATFORM_HINT  "wayland"
+    ANDROID_HOME  "${config.home.homeDirectory}/Android/Sdk"
+    ANDROID_SDK_ROOT  "${config.home.homeDirectory}/Android/Sdk"
+    XDG_CURRENT_DESKTOP  "niri"
+    XDG_SESSION_TYPE  "wayland"
+}
