@@ -13,6 +13,7 @@
     ./modules/gtk.nix
     ./modules/nixcord.nix
     ./modules/zoxide.nix
+    ./modules/xdg.nix
   ];
 
   nixpkgs.overlays = [ inputs.claude-code.overlays.default ];
@@ -41,12 +42,16 @@
     ripgrep
     claude-code
     dconf
-
     android-tools
     android-studio
     scrcpy 
     spotify
     python3
+    mpv
+    firefox
+
+    nautilus
+    eog
   ];
 
   fonts.fontconfig = {
