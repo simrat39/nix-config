@@ -48,6 +48,7 @@
     android-studio
     scrcpy 
     spotify
+    python3
   ];
 
   fonts.fontconfig = {
