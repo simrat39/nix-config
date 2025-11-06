@@ -61,11 +61,11 @@
         }
 
         niri.nixosModules.niri
-	{
+	({ pkgs, ... }: {
 	  programs.niri.enable = true;
           nixpkgs.overlays = [ niri.overlays.niri ];
           programs.niri.package = pkgs.niri-unstable;
-	}
+	})
 
         lanzaboote.nixosModules.lanzaboote
         ({ pkgs, lib, ...}: {

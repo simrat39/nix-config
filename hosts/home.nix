@@ -95,6 +95,7 @@
     ANDROID_SDK_ROOT = "${config.home.homeDirectory}/Android/Sdk";
     XDG_CURRENT_DESKTOP = "niri";
     XDG_SESSION_TYPE = "wayland";
+    XKB_CONFIG_ROOT = "${pkgs.xkeyboard-config}/share/X11/xkb";
   };
 
   home.sessionPath = [
