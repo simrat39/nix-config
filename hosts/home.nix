@@ -103,11 +103,7 @@
     XKB_CONFIG_ROOT = "${pkgs.xkeyboard-config}/share/X11/xkb";
   };
 
-  home.sessionPath = [
-    "${config.home.homeDirectory}/Android/Sdk/platform-tools"
-    "${config.home.homeDirectory}/Android/Sdk/tools"
-    "${config.home.homeDirectory}/Android/Sdk/tools/bin"
-  ];
+  home.sessionPath = [];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

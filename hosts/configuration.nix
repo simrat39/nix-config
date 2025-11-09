@@ -6,8 +6,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   
-  hardware.graphics.enable = true;
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      libva
+      libvdpau-va-gl
+    ];
+  };
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;

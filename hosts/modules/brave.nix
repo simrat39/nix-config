@@ -4,9 +4,12 @@
     enable = true;
     package = pkgs.brave;
     commandLineArgs = [
-      "--enable-features=VaapiVideoDecoder"
       "--ozone-platform=wayland"
       "--enable-wayland-ime" 
+      "--enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks"
+      "--enable-accelerated-video-decode"
+      "--enable-zero-copy"
+      "--use-gl=egl"
     ];
   };
 }
