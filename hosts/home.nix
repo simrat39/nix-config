@@ -35,19 +35,21 @@
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     wl-clipboard
+    dconf
+
     eza
     bat
     ripgrep
     claude-code
-    dconf
     android-tools
-    android-studio
-    scrcpy 
-    spotify
     python3
-    mpv
-    firefox
+    microfetch
 
+    scrcpy 
+    mpv
+    android-studio
+    spotify
+    firefox
     nautilus
     eog
   ];
@@ -72,6 +74,15 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    ".ideavimrc".text = ''
+      " Tab navigation keymaps
+      nnoremap <Tab> :action NextTab<CR>
+      nnoremap <S-Tab> :action PreviousTab<CR>
+      nnoremap <Space>x :action CloseContent<CR>
+      nmap ge :action GotoNextError<CR>
+      nmap gE :action GotoPreviousError<CR>
+    '';
   };
 
   # Home Manager can also manage your environment variables through
@@ -108,11 +119,6 @@
 
   programs.kitty = {
     enable = true;
-    # themeFile = "Nightfox";
-    #font = {
-    #  name = "JetBrainsMonoNL Nerd Font Mono";
-    #  size = 12;
-    #};
     settings = {
       adjust_line_height = "140%";
       enable_audio_bell = "no";
