@@ -10,10 +10,10 @@
     ./modules/brave.nix
     ./modules/tofi.nix
     ./modules/niri/niri.nix
-    ./modules/gtk.nix
     ./modules/nixcord.nix
     ./modules/zoxide.nix
     ./modules/xdg.nix
+    ./modules/zsh.nix
   ];
 
   nixpkgs.overlays = [ inputs.claude-code.overlays.default ];
@@ -110,11 +110,11 @@
 
   programs.kitty = {
     enable = true;
-    themeFile = "Nightfox";
-    font = {
-      name = "JetBrainsMonoNL Nerd Font Mono";
-      size = 12;
-    };
+    # themeFile = "Nightfox";
+    #font = {
+    #  name = "JetBrainsMonoNL Nerd Font Mono";
+    #  size = 12;
+    #};
     settings = {
       adjust_line_height = "140%";
       enable_audio_bell = "no";
@@ -129,17 +129,4 @@
   programs.dankMaterialShell.enableSystemd = true;
 
   programs.neovim.enable = true;
-
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-
-    shellAliases = {
-      ls = "eza";
-      cat = "bat";
-      cd = "z";
-    };
-  };
 }

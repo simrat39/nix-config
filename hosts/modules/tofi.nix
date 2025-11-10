@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 {
+  # Disable stylix automatic theming for tofi
+  stylix.targets.tofi.enable = false;
+
   programs.tofi = {
     enable = true;
     settings = {
@@ -11,8 +14,12 @@
       padding-top = "35%";
       result-spacing = 25;
       num-results = 5;
-      font = "monospace";
-      background-color = "#000A";
+
+      # Use stylix colors
+      font = config.stylix.fonts.monospace.name;
+      background-color = "#00000080";
+      text-color = config.lib.stylix.colors.withHashtag.base05;
+      selection-color = config.lib.stylix.colors.withHashtag.base0D;
     };
   };
 

@@ -45,9 +45,14 @@
       url = "github:kaylorben/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, dankMaterialShell, lanzaboote, claude-code, nixcord, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, niri, dankMaterialShell, lanzaboote, claude-code, nixcord, stylix, ... }@inputs: {
     nixosConfigurations.simpc = nixpkgs.lib.nixosSystem {
       modules = [
         ./hosts/simpc/configuration.nix
@@ -66,6 +71,8 @@
           nixpkgs.overlays = [ niri.overlays.niri ];
           programs.niri.package = pkgs.niri-unstable;
 	})
+
+	stylix.nixosModules.stylix
 
         lanzaboote.nixosModules.lanzaboote
         ({ pkgs, lib, ...}: {

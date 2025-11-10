@@ -17,6 +17,14 @@
         git add -A && git commit -m \"NixOS Generation $generation\"; \
       }; f";
     };
+		delta = {
+    	enable = true;
+    	options = {
+      	navigate = true;
+      	line-numbers = true;
+      	syntax-theme = "Dracula";
+    	};
+  	};
   };
 
   programs.gh = {
