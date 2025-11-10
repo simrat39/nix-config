@@ -1,0 +1,22 @@
+{
+  "name": "Gruvbox Material Dark Hard",
+  "primary": "#a9b665",
+  "primaryText": "#202020",
+  "primaryContainer": "#7daea3",
+  "secondary": "#d3869b",
+  "surface": "#202020",
+  "surfaceText": "#ddc7a1",
+  "surfaceVariant": "#2a2827",
+  "surfaceVariantText": "#ebdbb2",
+  "surfaceTint": "#a9b665",
+  "background": "#202020",
+  "backgroundText": "#ddc7a1",
+  "outline": "#5a524c",
+  "surfaceContainer": "#202020",
+  "surfaceContainerHigh": "#2a2827",
+  "surfaceContainerHighest": "#504945",
+  "error": "#ea6962",
+  "warning": "#d8a657",
+  "info": "#89b482",
+  "matugen_type": "scheme-tonal-spot"
+}
