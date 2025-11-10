@@ -68,8 +68,16 @@
         niri.nixosModules.niri
 	({ pkgs, ... }: {
 	  programs.niri.enable = true;
-          nixpkgs.overlays = [ niri.overlays.niri ];
+          nixpkgs.overlays = [
+            niri.overlays.niri
+          ];
           programs.niri.package = pkgs.niri-unstable;
+	})
+
+	({ pkgs, ... }: {
+          nixpkgs.overlays = [
+            claude-code.overlays.default
+          ];
 	})
 
 	stylix.nixosModules.stylix
