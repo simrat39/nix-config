@@ -16,10 +16,10 @@
 	programs.starship = {
 		enable = true;
 		enableZshIntegration = true;
-		settings = {
+    settings = pkgs.lib.importTOML "${pkgs.starship}/share/starship/presets/nerd-font-symbols.toml" // {
 			add_newline = false;
 			line_break.disabled = true;
-		};
+    };
 	};
 
 	programs.fzf = {

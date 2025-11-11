@@ -14,6 +14,7 @@
     ./modules/zoxide.nix
     ./modules/xdg.nix
     ./modules/zsh.nix
+    ./modules/nvim/nvim.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -33,7 +34,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
     wl-clipboard
     dconf
 
@@ -44,6 +44,9 @@
     android-tools
     python3
     microfetch
+    zip
+    unzip
+    ktlint
 
     scrcpy 
     mpv
@@ -53,13 +56,6 @@
     nautilus
     eog
   ];
-
-  fonts.fontconfig = {
-    enable = true;
-    defaultFonts = {
-      monospace = ["JetBrainsMono Nerd Font Mono"];
-    };
-  }; 
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -109,7 +105,6 @@
     ANDROID_SDK_ROOT = "${config.home.homeDirectory}/Android/Sdk";
     XDG_CURRENT_DESKTOP = "niri";
     XDG_SESSION_TYPE = "wayland";
-    XKB_CONFIG_ROOT = "${pkgs.xkeyboard-config}/share/X11/xkb";
   };
 
   home.sessionPath = [];
@@ -131,6 +126,4 @@
 
   programs.dankMaterialShell.enable = true;
   programs.dankMaterialShell.enableSystemd = true;
-
-  programs.neovim.enable = true;
 }
