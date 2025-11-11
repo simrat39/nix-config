@@ -50,9 +50,11 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, dankMaterialShell, lanzaboote, claude-code, nixcord, stylix, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, niri, dankMaterialShell, lanzaboote, claude-code, nixcord, stylix, nix-vscode-extensions, ... }@inputs: {
     nixosConfigurations.simpc = nixpkgs.lib.nixosSystem {
       modules = [
         ./hosts/simpc/configuration.nix
@@ -66,21 +68,22 @@
         }
 
         niri.nixosModules.niri
-	({ pkgs, ... }: {
-	  programs.niri.enable = true;
+	      ({ pkgs, ... }: {
+	        programs.niri.enable = true;
           nixpkgs.overlays = [
             niri.overlays.niri
           ];
           programs.niri.package = pkgs.niri-unstable;
-	})
+	      })
 
-	({ pkgs, ... }: {
+        ({ pkgs, ... }: {
           nixpkgs.overlays = [
             claude-code.overlays.default
+            nix-vscode-extensions.overlays.default
           ];
-	})
+        })
 
-	stylix.nixosModules.stylix
+	      stylix.nixosModules.stylix
 
         lanzaboote.nixosModules.lanzaboote
         ({ pkgs, lib, ...}: {

@@ -15,6 +15,7 @@
     ./modules/xdg.nix
     ./modules/zsh.nix
     ./modules/nvim/nvim.nix
+    ./modules/vscode.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -47,6 +48,7 @@
     zip
     unzip
     ktlint
+    nodejs
 
     scrcpy 
     mpv
