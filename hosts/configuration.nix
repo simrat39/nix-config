@@ -55,6 +55,7 @@
   environment.systemPackages = with pkgs; [
     sbctl
     efibootmgr
+    gruvbox-plus-icons
   ];
 
   programs.zsh.enable = true;

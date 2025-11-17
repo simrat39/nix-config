@@ -8,6 +8,7 @@
     extensions = with pkgs.vscode-extensions; [
       anthropic.claude-code
       vscodevim.vim
+      bradlc.vscode-tailwindcss
     ];
   };
 }
