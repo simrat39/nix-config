@@ -5,6 +5,7 @@
     inputs.dankMaterialShell.homeModules.dankMaterialShell.default
     inputs.dankMaterialShell.homeModules.dankMaterialShell.niri
     inputs.nixcord.homeModules.nixcord
+    inputs.spicetify-nix.homeManagerModules.spicetify
 
     ./modules/git.nix
     ./modules/brave.nix
@@ -16,6 +17,7 @@
     ./modules/zsh.nix
     ./modules/nvim/nvim.nix
     ./modules/vscode.nix
+    ./modules/spicetify.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -49,14 +51,21 @@
     unzip
     ktlint
     nodejs
+    mkcert
+    dust
+    graphviz
+
+    ruby_3_3
+    gcc
+    gnumake
 
     scrcpy 
     mpv
     android-studio
-    spotify
     firefox
     nautilus
     eog
+    electron-bin
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

@@ -52,9 +52,14 @@
     };
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, dankMaterialShell, lanzaboote, claude-code, nixcord, stylix, nix-vscode-extensions, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, niri, dankMaterialShell, lanzaboote, claude-code, nixcord, stylix, nix-vscode-extensions, spicetify-nix, ... }@inputs: {
     nixosConfigurations.simpc = nixpkgs.lib.nixosSystem {
       modules = [
         ./hosts/simpc/configuration.nix
