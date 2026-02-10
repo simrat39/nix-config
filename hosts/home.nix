@@ -2,8 +2,8 @@
 
 {
   imports = [
-    inputs.dankMaterialShell.homeModules.dankMaterialShell.default
-    inputs.dankMaterialShell.homeModules.dankMaterialShell.niri
+    inputs.dms.homeModules.dank-material-shell
+    inputs.dms.homeModules.niri
     inputs.nixcord.homeModules.nixcord
     inputs.spicetify-nix.homeManagerModules.spicetify
 
@@ -135,8 +135,24 @@
     };
   };
 
-  programs.dankMaterialShell.enable = true;
-  programs.dankMaterialShell.enableSystemd = true;
+  programs.dank-material-shell = {
+    enable = true;
+    systemd.enable = true;
+    niri = {
+      enableSpawn = true;
+      includes = {
+        enable = true;
+        override = true;
+        originalFileName = "hm";
+        filesToInclude = [
+          "binds"
+          "colors"
+          "layout"
+          "wpblur"
+        ];
+      };
+    };
+  };
 
   stylix.iconTheme = {
     enable = true;
