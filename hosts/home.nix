@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -18,6 +18,7 @@
     ./modules/nvim/nvim.nix
     ./modules/vscode.nix
     ./modules/spicetify.nix
+    ./modules/dms/dms.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -132,25 +133,6 @@
       cursor_trail_decay = "0.1 0.4";
       adjust_column_width = 0;
       linux_display_server = "wayland";
-    };
-  };
-
-  programs.dank-material-shell = {
-    enable = true;
-    systemd.enable = true;
-    niri = {
-      enableSpawn = true;
-      includes = {
-        enable = true;
-        override = true;
-        originalFileName = "hm";
-        filesToInclude = [
-          "binds"
-          "colors"
-          "layout"
-          "wpblur"
-        ];
-      };
     };
   };
 
