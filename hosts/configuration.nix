@@ -12,9 +12,15 @@
   
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
     extraPackages = with pkgs; [
+      # AMD GPU drivers (RADV is enabled by default)
+      rocmPackages.clr.icd
+
+      # Video acceleration
       libva
       libvdpau-va-gl
+      libva-vdpau-driver
     ];
   };
 
@@ -25,6 +31,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
 
   # Set your time zone.
   time.timeZone = "America/Vancouver";
@@ -56,6 +63,11 @@
     sbctl
     efibootmgr
     gruvbox-plus-icons
+
+    # GPU/Graphics utilities
+    mesa
+    vulkan-tools
+    mesa-demos
   ];
 
   programs.zsh.enable = true;
@@ -76,6 +88,13 @@
   };
 
   services.gnome.gnome-keyring.enable = true;
+
+  services.gvfs.enable = true;
+
+  # DJI RC Pro MTP support
+  services.udev.extraRules = ''
+    ATTR{idVendor}=="2ca3", ATTR{idProduct}=="1021", ENV{ID_MTP_DEVICE}="1", ENV{ID_MEDIA_PLAYER}="1"
+  '';
 
   programs.nix-ld.enable = true;
 }

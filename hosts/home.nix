@@ -1,5 +1,10 @@
 { config, lib, pkgs, inputs, ... }:
 
+let
+  firebase-tools-node20 = pkgs.firebase-tools.override {
+    buildNpmPackage = pkgs.buildNpmPackage.override { nodejs = pkgs.nodejs_20; };
+  };
+in
 {
   imports = [
     inputs.dms.homeModules.dank-material-shell
@@ -60,13 +65,19 @@
     gcc
     gnumake
 
-    scrcpy 
+    jdk
+    kotlin
+    gradle
+
+    scrcpy
     mpv
     android-studio
     firefox
     nautilus
     eog
     electron-bin
+
+    firebase-tools-node20
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -136,7 +147,7 @@
     };
   };
 
-  stylix.iconTheme = {
+  stylix.icons = {
     enable = true;
     package = pkgs.gruvbox-plus-icons;
     dark = "Gruvbox-Plus-Dark";
