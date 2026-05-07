@@ -45,10 +45,21 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    tidaluna = {
+      url = "github:Inrixia/TidaLuna";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    claude-desktop = {
+      url = "github:aaddrick/claude-desktop-debian/e5cc4b21f8a0be95f2d1c52e99d5c6f92a0e83cf";
+    };
+
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, dms, lanzaboote, claude-code, nixcord, stylix, nix-vscode-extensions, spicetify-nix, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, niri, dms, lanzaboote, claude-code, nixcord, stylix, nix-vscode-extensions, spicetify-nix, tidaluna, claude-desktop, ... }@inputs: {
     nixosConfigurations.simpc = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
       modules = [
         ./hosts/simpc/configuration.nix
 
@@ -72,6 +83,7 @@
         ({ pkgs, ... }: {
           nixpkgs.overlays = [
             claude-code.overlays.default
+            claude-desktop.overlays.default
             nix-vscode-extensions.overlays.default
           ];
         })

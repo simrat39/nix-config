@@ -78,6 +78,10 @@ in
     electron-bin
 
     firebase-tools-node20
+    stremio-linux-shell
+
+    opencode
+    obsidian
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

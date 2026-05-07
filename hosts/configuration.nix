@@ -4,6 +4,7 @@
 {
   imports = [
     ./modules/stylix.nix
+    ./modules/tidaluna.nix
   ];
 
   # Bootloader.
@@ -23,6 +24,8 @@
       libva-vdpau-driver
     ];
   };
+
+  hardware.opengl.enable = true;
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -52,7 +55,7 @@
   users.users.simrat39 = {
     isNormalUser = true;
     description = "Simrat Grewal";
-    extraGroups = [ "networkmanager" "wheel" "kvm" ];
+    extraGroups = [ "networkmanager" "wheel" "kvm" "video" ];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
@@ -63,6 +66,7 @@
     sbctl
     efibootmgr
     gruvbox-plus-icons
+    claude-desktop
 
     # GPU/Graphics utilities
     mesa
@@ -87,6 +91,9 @@
     pulse.enable = true;
   };
 
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
   services.gnome.gnome-keyring.enable = true;
 
   services.gvfs.enable = true;
@@ -95,6 +102,9 @@
   services.udev.extraRules = ''
     ATTR{idVendor}=="2ca3", ATTR{idProduct}=="1021", ENV{ID_MTP_DEVICE}="1", ENV{ID_MEDIA_PLAYER}="1"
   '';
+
+  # Eagle Eyes telemetry UDP broadcast
+  networking.firewall.allowedUDPPorts = [ 7742 ];
 
   programs.nix-ld.enable = true;
 }

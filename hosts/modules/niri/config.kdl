@@ -72,14 +72,14 @@ input {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
-output "DP-2" {
+output "DP-1" {
   mode "1920x1080@165.003"
   position x=1920 y=0
 }
 
-output "DP-1" {
+output "DP-2" {
   mode "1920x1080@100.000"
-  // transform "90"
+  // transform "0"
   position x=0 y=0
 }
 
@@ -323,16 +323,16 @@ window-rule {
     clip-to-geometry true
 }
 
-workspace "1" { open-on-output "DP-2"; }
-workspace "2" { open-on-output "DP-2"; }
-workspace "3" { open-on-output "DP-2"; }
-workspace "4" { open-on-output "DP-2"; }
-workspace "5" { open-on-output "DP-2"; }
-workspace "6" { open-on-output "DP-2"; }
-workspace "7" { open-on-output "DP-2"; }
-workspace "8" { open-on-output "DP-3"; }
-workspace "9" { open-on-output "DP-3"; }
-workspace "10" { open-on-output "DP-3"; }
+workspace "1" { open-on-output "DP-1"; }
+workspace "2" { open-on-output "DP-1"; }
+workspace "3" { open-on-output "DP-1"; }
+workspace "4" { open-on-output "DP-1"; }
+workspace "5" { open-on-output "DP-1"; }
+workspace "6" { open-on-output "DP-1"; }
+workspace "7" { open-on-output "DP-1"; }
+workspace "8" { open-on-output "DP-2"; }
+workspace "9" { open-on-output "DP-2"; }
+workspace "10" { open-on-output "DP-2"; }
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
