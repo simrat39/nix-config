@@ -98,13 +98,5 @@
 
   services.gvfs.enable = true;
 
-  # DJI RC Pro MTP support
-  services.udev.extraRules = ''
-    ATTR{idVendor}=="2ca3", ATTR{idProduct}=="1021", ENV{ID_MTP_DEVICE}="1", ENV{ID_MEDIA_PLAYER}="1"
-  '';
-
-  # Eagle Eyes telemetry UDP broadcast
-  networking.firewall.allowedUDPPorts = [ 7742 ];
-
   programs.nix-ld.enable = true;
 }

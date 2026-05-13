@@ -57,39 +57,43 @@
 
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, dms, lanzaboote, claude-code, nixcord, stylix, nix-vscode-extensions, spicetify-nix, tidaluna, claude-desktop, ... }@inputs: {
-    nixosConfigurations.simpc = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./hosts/simpc/configuration.nix
+  outputs = { self, nixpkgs, home-manager, niri, dms, lanzaboote, claude-code, nixcord, stylix, nix-vscode-extensions, spicetify-nix, tidaluna, claude-desktop, ... }@inputs:
+    let
+      mkHost = { hostName, extraModules ? [] }: nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs hostName; };
+        modules = [
+          ./hosts/${hostName}/configuration.nix
 
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.simrat39 = import ./hosts/simpc/home.nix;
-          home-manager.extraSpecialArgs = { inherit self inputs; };
-        }
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.simrat39 = import ./hosts/${hostName}/home.nix;
+            home-manager.extraSpecialArgs = { inherit self inputs hostName; };
+          }
 
-        niri.nixosModules.niri
-	      ({ pkgs, ... }: {
-	        programs.niri.enable = true;
-          nixpkgs.overlays = [
-            niri.overlays.niri
-          ];
-          programs.niri.package = pkgs.niri-unstable;
-	      })
+          niri.nixosModules.niri
+          ({ pkgs, ... }: {
+            programs.niri.enable = true;
+            nixpkgs.overlays = [
+              niri.overlays.niri
+            ];
+            programs.niri.package = pkgs.niri-unstable;
+          })
 
-        ({ pkgs, ... }: {
-          nixpkgs.overlays = [
-            claude-code.overlays.default
-            claude-desktop.overlays.default
-            nix-vscode-extensions.overlays.default
-          ];
-        })
+          ({ pkgs, ... }: {
+            nixpkgs.overlays = [
+              claude-code.overlays.default
+              claude-desktop.overlays.default
+              nix-vscode-extensions.overlays.default
+            ];
+          })
 
-	      stylix.nixosModules.stylix
+          stylix.nixosModules.stylix
+        ] ++ extraModules;
+      };
 
+      lanzabooteModules = [
         lanzaboote.nixosModules.lanzaboote
         ({ pkgs, lib, ...}: {
           boot.loader.systemd-boot.enable = lib.mkForce false;
@@ -99,6 +103,15 @@
           };
         })
       ];
+    in {
+      nixosConfigurations = {
+        simpc = mkHost {
+          hostName = "simpc";
+          extraModules = lanzabooteModules;
+        };
+        simbook = mkHost {
+          hostName = "simbook";
+        };
+      };
     };
-  };
 }

@@ -72,16 +72,7 @@ input {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
-output "DP-1" {
-  mode "1920x1080@165.003"
-  position x=1920 y=0
-}
-
-output "DP-2" {
-  mode "1920x1080@100.000"
-  // transform "0"
-  position x=0 y=0
-}
+// Per-host output configuration is appended from hosts/<host>/niri.kdl
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
@@ -323,16 +314,7 @@ window-rule {
     clip-to-geometry true
 }
 
-workspace "1" { open-on-output "DP-1"; }
-workspace "2" { open-on-output "DP-1"; }
-workspace "3" { open-on-output "DP-1"; }
-workspace "4" { open-on-output "DP-1"; }
-workspace "5" { open-on-output "DP-1"; }
-workspace "6" { open-on-output "DP-1"; }
-workspace "7" { open-on-output "DP-1"; }
-workspace "8" { open-on-output "DP-2"; }
-workspace "9" { open-on-output "DP-2"; }
-workspace "10" { open-on-output "DP-2"; }
+// Per-host workspace pinning is appended from hosts/<host>/niri.kdl
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
