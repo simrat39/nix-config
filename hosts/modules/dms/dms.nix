@@ -8,7 +8,7 @@ in
     enable = true;
     systemd.enable = true;
     niri = {
-      enableSpawn = true;
+      enableSpawn = false;
       includes = {
         enable = true;
         override = true;
