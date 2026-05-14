@@ -4,7 +4,6 @@
 {
   imports = [
     ./modules/stylix.nix
-    ./modules/tidaluna.nix
   ];
 
   # Bootloader.

@@ -683,8 +683,7 @@
         "nixcord": "nixcord",
         "nixpkgs": "nixpkgs_3",
         "spicetify-nix": "spicetify-nix",
-        "stylix": "stylix",
-        "tidaluna": "tidaluna"
+        "stylix": "stylix"
       }
     },
     "rust-overlay": {
@@ -804,26 +803,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "tidaluna": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1778321706,
-        "narHash": "sha256-13bz1CqjGr1CxR3wqpKb1kx4NrgvcsdDri0VSbwf/d4=",
-        "owner": "Inrixia",
-        "repo": "TidaLuna",
-        "rev": "af95ee755c31c594d7aabb06b444e23251259ba8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Inrixia",
-        "repo": "TidaLuna",
         "type": "github"
       }
     },

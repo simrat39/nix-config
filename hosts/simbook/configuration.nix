@@ -13,6 +13,7 @@
 
   # Laptop power management (AMD)
   services.tlp.enable = true;
+  services.upower.enable = true;
   powerManagement.enable = true;
 
   # Touchpad
