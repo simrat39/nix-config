@@ -34,9 +34,10 @@
   # Enable networking
   networking.networkmanager.enable = true;
   networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
+  networking.firewall.allowedUDPPorts = [ 7742 ];
 
   # Set your time zone.
-  time.timeZone = "America/Vancouver";
+  time.timeZone = "America/Toronto";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
