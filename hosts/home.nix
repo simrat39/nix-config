@@ -81,6 +81,8 @@ in
     stremio-linux-shell
 
     opencode
+    opencode-desktop
+
     obsidian
     google-chrome
   ];

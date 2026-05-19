@@ -16,6 +16,12 @@
   services.upower.enable = true;
   powerManagement.enable = true;
 
+  # Required for reliable audio/mic support on ThinkPad P16s Gen 2 AMD.
+  hardware.firmware = with pkgs; [
+    alsa-firmware
+    sof-firmware
+  ];
+
   # Touchpad
   services.libinput = {
     enable = true;
