@@ -88,6 +88,8 @@ in
     google-cloud-sdk
 
     localtunnel
+    power-profiles-daemon
+    tcpdump
     stripe-cli
   ];
 

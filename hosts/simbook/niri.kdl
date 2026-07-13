@@ -1,19 +1,15 @@
-// Laptop output config — adjust mode/scale to your panel.
-// Example for an internal display:
-//
-// output "eDP-1" {
-//   mode "1920x1080@60.000"
-//   scale 1.0
-//   position x=0 y=0
-// }
+output "HDMI-A-1" {
+  mode "3840x2400@59.994"
+  scale 2.0
+}
 
 workspace "1"
 workspace "2"
 workspace "3"
 workspace "4"
-workspace "5"
-workspace "6"
-workspace "7"
-workspace "8"
-workspace "9"
+workspace "5" { open-on-output "HDMI-A-1"; }
+workspace "6" { open-on-output "HDMI-A-1"; }
+workspace "7" { open-on-output "HDMI-A-1"; }
+workspace "8" { open-on-output "HDMI-A-1"; }
+workspace "9" { open-on-output "HDMI-A-1"; }
 workspace "10"
