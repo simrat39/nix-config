@@ -87,6 +87,8 @@ in
     google-chrome
 
     localtunnel
+    power-profiles-daemon
+    tcpdump
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

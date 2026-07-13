@@ -34,7 +34,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
   networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
-  networking.firewall.allowedUDPPorts = [ 7742 ];
+  networking.firewall.allowedUDPPorts = [ 7742 8889 8892 ];
   networking.firewall.allowedTCPPorts = [ 3000 ];
 
   # Set your time zone.
