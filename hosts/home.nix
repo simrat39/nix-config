@@ -85,8 +85,10 @@ in
 
     obsidian
     google-chrome
+    google-cloud-sdk
 
     localtunnel
+    stripe-cli
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -147,6 +149,11 @@ in
   programs.kitty = {
     enable = true;
     settings = {
+      # Disable kitty's config auto-reload watcher. The config is a read-only
+      # /nix/store symlink (home-manager managed), so live-reload is useless here,
+      # and stylix injects an `include` of a bare /nix/store path whose watcher
+      # recurses into the store and exhausts inotify watches. Negative = disabled.
+      auto_reload_config = -1;
       adjust_line_height = "140%";
       enable_audio_bell = "no";
       cursor_trail = 3;
