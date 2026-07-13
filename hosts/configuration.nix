@@ -76,9 +76,21 @@
     mesa
     vulkan-tools
     mesa-demos
+
+    # Gaming
+    mangohud
+    protonup-qt
   ];
 
   programs.zsh.enable = true;
+
+  # Gaming
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    gamescopeSession.enable = true;
+  };
+  programs.gamemode.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
