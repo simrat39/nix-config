@@ -69,6 +69,9 @@
     gruvbox-plus-icons
     claude-desktop
 
+    # X11 apps (Steam etc.) under niri
+    xwayland-satellite-unstable
+
     # GPU/Graphics utilities
     mesa
     vulkan-tools
@@ -102,4 +105,9 @@
   services.gvfs.enable = true;
 
   programs.nix-ld.enable = true;
+
+  virtualisation.docker = {
+    enable = true;
+  };
+
 }
