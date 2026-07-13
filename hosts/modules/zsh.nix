@@ -12,6 +12,20 @@
       cat = "bat";
       cd = "z";
     };
+
+    # ponytail: single dir-local alias hardcoded; generalize to a .zsh-aliases loader if more dirs need this
+    initContent = ''
+      autoload -U add-zsh-hook
+      _eagle_aliases() {
+        if [[ $PWD == /home/simrat39/work/eagle-hq(|/*) ]]; then
+          alias devsync='gcloud run jobs execute eagle-hq-sync --project eagle-dev-71140 --region us-central1 --wait'
+        else
+          unalias devsync 2>/dev/null
+        fi
+      }
+      add-zsh-hook chpwd _eagle_aliases
+      _eagle_aliases
+    '';
   };
 
 	programs.starship = {
