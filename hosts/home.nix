@@ -85,12 +85,15 @@ in
 
     obsidian
     google-chrome
-    google-cloud-sdk
+    (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.cloud-run-proxy ])
 
     localtunnel
     power-profiles-daemon
     tcpdump
     stripe-cli
+
+    just
+    lsof
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
