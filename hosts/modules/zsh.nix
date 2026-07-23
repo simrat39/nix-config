@@ -18,7 +18,7 @@
       autoload -U add-zsh-hook
       _eagle_aliases() {
         if [[ $PWD == /home/simrat39/work/eagle-hq(|/*) ]]; then
-          alias devsync='gcloud run jobs execute eagle-hq-sync --project eagle-dev-71140 --region us-central1 --wait'
+          alias devsync='gcloud run jobs execute eagle-hq-sync --project eagle-dev-71140 --region us-central1 --args="sync_main.py,--full" --wait'
         else
           unalias devsync 2>/dev/null
         fi

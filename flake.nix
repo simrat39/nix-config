@@ -42,7 +42,8 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
+      # ponytail: pinned to match april-2026 nixpkgs; unpin when nixpkgs is updated
+      url = "github:Gerg-L/spicetify-nix/8b00357d910c5281181c21fc3a0d071ceec80c06";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
