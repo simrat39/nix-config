@@ -29,6 +29,8 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  boot.supportedFilesystems = [ "ntfs" ];
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable networking
@@ -115,6 +117,16 @@
   services.gnome.gnome-keyring.enable = true;
 
   services.gvfs.enable = true;
+
+  # Let wheel users mount internal drives from Nautilus without a password
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (action.id == "org.freedesktop.udisks2.filesystem-mount-system" &&
+          subject.isInGroup("wheel")) {
+        return polkit.Result.YES;
+      }
+    });
+  '';
 
   programs.nix-ld.enable = true;
 
