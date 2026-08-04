@@ -2,10 +2,8 @@
 {
   programs.chromium = {
     enable = true;
+    # ponytail: no commandLineArgs — NIXOS_OZONE_WL=1 (home.nix) makes the
+    # brave wrapper add wayland + wayland-ime flags itself
     package = pkgs.brave;
-    commandLineArgs = [
-      "--ozone-platform=wayland"
-      "--enable-wayland-ime"
-    ];
   };
 }
