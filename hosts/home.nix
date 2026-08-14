@@ -24,6 +24,7 @@ in
     ./modules/vscode.nix
     ./modules/spicetify.nix
     ./modules/dms/dms.nix
+    ./modules/synara.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -82,6 +83,7 @@ in
 
     opencode
     opencode-desktop
+    inputs.t3code.packages.${pkgs.system}.default
 
     obsidian
     google-chrome

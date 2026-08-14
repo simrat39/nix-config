@@ -51,6 +51,12 @@
       url = "github:aaddrick/claude-desktop-debian/e5cc4b21f8a0be95f2d1c52e99d5c6f92a0e83cf";
     };
 
+    # upstream pingdotgg/t3code has no flake.nix; this packages its release AppImage
+    t3code = {
+      url = "github:omarcresp/t3code-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs = { self, nixpkgs, home-manager, niri, dms, lanzaboote, claude-code, nixcord, stylix, nix-vscode-extensions, spicetify-nix, claude-desktop, ... }@inputs:
