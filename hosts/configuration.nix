@@ -128,6 +128,13 @@
     });
   '';
 
+  # Hide the internal Windows (NTFS) partitions from Nautilus.
+  # ponytail: matches any non-USB NTFS volume; switch to ENV{ID_FS_UUID}=="..." if you
+  # ever want one of them back.
+  services.udev.extraRules = ''
+    SUBSYSTEM=="block", ENV{ID_FS_TYPE}=="ntfs", ENV{ID_BUS}!="usb", ENV{UDISKS_IGNORE}="1"
+  '';
+
   programs.nix-ld.enable = true;
 
   virtualisation.docker = {

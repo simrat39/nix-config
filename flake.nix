@@ -79,6 +79,21 @@
             programs.niri.enable = true;
             nixpkgs.overlays = [
               niri.overlays.niri
+              # ponytail: nixpkgs bumped libdisplay-info to 0.4.0 but niri's
+              # libdisplay-info-sys crate requires < 0.4.0, so build the real
+              # 0.2.0 (hash from nixos-25.05). Drop once niri accepts 0.4.
+              (final: prev: {
+                libdisplay-info_0_2 = prev.libdisplay-info.overrideAttrs (old: rec {
+                  version = "0.2.0";
+                  src = final.fetchFromGitLab {
+                    domain = "gitlab.freedesktop.org";
+                    owner = "emersion";
+                    repo = "libdisplay-info";
+                    tag = version;
+                    hash = "sha256-6xmWBrPHghjok43eIDGeshpUEQTuwWLXNHg7CnBUt3Q=";
+                  };
+                });
+              })
             ];
             programs.niri.package = pkgs.niri-unstable;
           })

@@ -25,6 +25,7 @@ in
     ./modules/spicetify.nix
     ./modules/dms/dms.nix
     ./modules/synara.nix
+    ./modules/orca.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -96,6 +97,11 @@ in
 
     just
     lsof
+
+    ffmpeg
+    wayscriber
+
+    prismlauncher
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
