@@ -57,6 +57,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    tidaLuna = {
+      url = "github:Inrixia/TidaLuna";
+      # its pnpm fetcherVersion=3 breaks on newer nixpkgs; keep its own pin
+      inputs.nixpkgs.url = "github:NixOS/nixpkgs/48d91f2c0ce7b9e589f967d4f685153dd765dcdd";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, niri, dms, lanzaboote, claude-code, nixcord, stylix, nix-vscode-extensions, spicetify-nix, claude-desktop, ... }@inputs:

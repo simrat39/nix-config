@@ -11,6 +11,7 @@
       ls = "eza";
       cat = "bat";
       cd = "z";
+      ns = "nix-shell --run zsh";
     };
 
     # ponytail: single dir-local alias hardcoded; generalize to a .zsh-aliases loader if more dirs need this

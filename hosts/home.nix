@@ -52,6 +52,7 @@ in
     bat
     ripgrep
     claude-code
+    herdr
     android-tools
     python3
     microfetch
@@ -74,7 +75,9 @@ in
     scrcpy
     mpv
     android-studio
+    flutter
     firefox
+    inputs.tidaLuna.packages.${pkgs.stdenv.hostPlatform.system}.default
     nautilus
     eog
     electron-bin
@@ -84,7 +87,7 @@ in
 
     opencode
     opencode-desktop
-    inputs.t3code.packages.${pkgs.system}.default
+    inputs.t3code.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     obsidian
     google-chrome

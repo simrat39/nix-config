@@ -24,7 +24,6 @@
     ];
   };
 
-  hardware.opengl.enable = true;
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -58,7 +57,7 @@
   users.users.simrat39 = {
     isNormalUser = true;
     description = "Simrat Grewal";
-    extraGroups = [ "networkmanager" "wheel" "kvm" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "kvm" "video" "docker" ];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
@@ -70,6 +69,9 @@
     efibootmgr
     gruvbox-plus-icons
     claude-desktop
+    winboat
+    freerdp
+    docker-compose
 
     # X11 apps (Steam etc.) under niri
     xwayland-satellite-unstable
