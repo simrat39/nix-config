@@ -26,6 +26,7 @@ in
     ./modules/dms/dms.nix
     ./modules/synara.nix
     ./modules/orca.nix
+    ./modules/zeron.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
