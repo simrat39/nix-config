@@ -1,25 +1,40 @@
 { pkgs, ... }:
 
 let
-  # ponytail: upstream has no flake; wrap the release tarball. Bump version+hash to update.
-  version = "0.2.101";
-  zeron = pkgs.stdenv.mkDerivation {
+  # Built from our fork (~/dev/zeron: upstream + nested-repo diffs). To update:
+  # rebase the fork onto upstream, commit, then bump `rev` here.
+  # ponytail: local path only exists on simpc; push the fork to GitHub for simbook.
+  src = builtins.fetchGit {
+    url = "/home/simrat39/dev/zeron";
+    rev = "4c1f18c452a43fc6c151d11a79a90399b9fa5e5a";
+  };
+  zeron = pkgs.rustPlatform.buildRustPackage {
     pname = "zeron";
-    inherit version;
-    src = pkgs.fetchurl {
-      url = "https://github.com/zeronsh/zeron/releases/download/v${version}/zeron-${version}-linux-x86_64.tar.gz";
-      hash = "sha256-JVpz3TPE8uQwai2P+4QlblnOAtb5vGjO8QxxiKvLifg=";
+    version = (builtins.fromTOML (builtins.readFile "${src}/Cargo.toml")).workspace.package.version;
+    inherit src;
+    cargoLock = {
+      lockFile = "${src}/Cargo.lock";
+      allowBuiltinFetchGit = true; # git deps (gpui fork etc.) are pinned by rev in Cargo.lock
     };
+    cargoBuildFlags = [ "-p" "zeron" ];
+    doCheck = false; # the full suite is huge; the fork's own test runs in the dev shell
 
-    nativeBuildInputs = with pkgs; [ autoPatchelfHook wrapGAppsHook3 ];
-    buildInputs = with pkgs; [ stdenv.cc.cc.lib libxkbcommon xorg.libxcb ];
-    # dlopen'd at runtime (Tauri/webkit), not in DT_NEEDED
-    runtimeDependencies = with pkgs; [ webkitgtk_4_1 gtk3 glib gdk-pixbuf libsoup_3 wayland libGL ];
+    nativeBuildInputs = with pkgs; [ pkg-config cmake perl rustPlatform.bindgenHook autoPatchelfHook wrapGAppsHook3 ];
+    buildInputs = with pkgs; [
+      openssl sqlite zstd zlib alsa-lib fontconfig freetype
+      libxkbcommon wayland libxcb libx11
+      glib gtk3 webkitgtk_4_1 libsoup_3 json-glib onnxruntime
+    ];
+    # ort-sys would otherwise download onnxruntime at build time
+    ORT_LIB_PATH = "${pkgs.onnxruntime}/lib";
+    ORT_LIB_LOCATION = "${pkgs.onnxruntime}/lib";
+    ORT_PREFER_DYNAMIC_LINK = "1";
+    # dlopen'd at runtime, not in DT_NEEDED
+    runtimeDependencies = with pkgs; [ vulkan-loader wayland libxkbcommon libGL webkitgtk_4_1 ];
 
-    installPhase = ''
-      install -Dm755 zeron $out/bin/zeron
-      install -Dm644 zeron.desktop $out/share/applications/zeron.desktop
-      install -Dm644 zeron.png $out/share/icons/hicolor/1024x1024/apps/zeron.png
+    postInstall = ''
+      install -Dm644 dist/zeron.desktop $out/share/applications/zeron.desktop
+      install -Dm644 dist/zeron.png $out/share/icons/hicolor/1024x1024/apps/zeron.png
     '';
   };
 in
