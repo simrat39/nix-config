@@ -88,7 +88,7 @@ in
 
     opencode
     opencode-desktop
-    inputs.t3code.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.t3code.packages.${pkgs.stdenv.hostPlatform.system}.t3-code-nightly
 
     obsidian
     google-chrome
