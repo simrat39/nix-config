@@ -43,7 +43,7 @@
   networking.networkmanager.enable = true;
   networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
   networking.firewall.allowedUDPPorts = [ 7742 8889 8892 7777 ];
-  networking.firewall.allowedTCPPorts = [ 3000 7777 ];
+  networking.firewall.allowedTCPPorts = [ 3000 7777 3773 ];
 
   # Set your time zone.
   time.timeZone = "America/Vancouver";
