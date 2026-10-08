@@ -152,6 +152,11 @@
   '';
 
   programs.nix-ld.enable = true;
+  # libs for T3 Code's downloaded chrome-headless-shell (`t3 browser setup` wants apt)
+  programs.nix-ld.libraries = with pkgs; [
+    glib nspr nss at-spi2-core dbus expat libgbm libxkbcommon systemd alsa-lib
+    libx11 libxcomposite libxdamage libxext libxfixes libxrandr libxcb
+  ];
 
   virtualisation.docker = {
     enable = true;
