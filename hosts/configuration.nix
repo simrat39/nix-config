@@ -109,6 +109,12 @@
 
   programs.zsh.enable = true;
 
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = [ "simrat39" ];
+  };
+
   # Gaming
   programs.steam = {
     enable = true;
